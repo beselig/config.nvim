@@ -249,7 +249,6 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
-
 vim.keymap.set('n', '<leader>pv', function()
   vim.cmd 'Explore'
 end)
@@ -523,3 +522,14 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+
+-- CUSTOM
+
+-- hide virtual_text diagnostics
+vim.diagnostic.config({
+  virtual_text = false
+})
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]

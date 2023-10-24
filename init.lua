@@ -159,8 +159,8 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
---      char = '┊',
---      show_trailing_blankline_indent = false,
+      --      char = '┊',
+      --      show_trailing_blankline_indent = false,
     },
   },
 
@@ -173,15 +173,6 @@ require('lazy').setup({
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
   -- requirements installed.
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
 
   {
     -- Highlight, edit, and navigate code
@@ -191,6 +182,19 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
+  "github/copilot.vim",
+
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  }
+
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.

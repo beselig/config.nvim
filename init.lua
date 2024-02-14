@@ -40,6 +40,9 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- set scrolloff=10:
+vim.opt.scrolloff = 10
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -171,7 +174,18 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  "github/copilot.vim",
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+      -- Mapping tab is already used by NvChad
+      vim.g.copilot_no_tab_map = true;
+      vim.g.copilot_assume_mapped = true;
+      vim.g.copilot_tab_fallback = "";
+      -- The mapping is set to other key, see custom/lua/mappings
+      -- or run <leader>ch to see copilot mapping section
+    end
+  },
 
   {
     "folke/trouble.nvim",
